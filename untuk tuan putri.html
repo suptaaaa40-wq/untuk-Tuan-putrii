@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Tuan Putri 💖</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffd1dc, #ffe4e1);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    transition: background 1s ease;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+    padding: 20px;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease;
+    position: relative;
+  }
+
+  #gifCharacter {
+    display: block;
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin: 0 auto 10px auto;
+    animation: float 3s ease-in-out infinite, pop 1s ease;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 2em;
+    color: #ff69b4;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #ff80ab;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  button:hover {
+    background: #ff4da6;
+    transform: scale(1.1);
+  }
+
+  button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes float {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+  }
+
+  @keyframes pop {
+    0% {transform: scale(0.2); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <img id="gifCharacter" src="" alt="Karakter lucu">
+    <h1 id="title">Hai, Tuan Putriku 💖</h1>
+    <p id="text">Kamu tahu? Dunia jadi lebih manis sejak aku mengenalmu 🍓</p>
+    <button id="nextButton" onclick="nextPage()">Halaman Berikutnya ➜</button>
+  </div>
+
+<script>
+
+const pages = [
+  {title: "Hai, Tuan Putriku 💖", text: "Ini ku buat udah membuang semua malu ku jadi jangan muntah yhhh🍓", gif: "6.gif"},
+  {title: "Tauu gaaak?? ☀️", text: "sejujurly jujurly banget. ku seneng njir bsa ma kmu :v💕", gif: "1.gif"},
+  {title: " jadiii🌸", text: "moga antum tidak cepet cepet bosen sama ane 💌", gif: "2.gif"},
+  {title: "dan juga 💫", text: "kita memang baru sebentar tapi kalo di tinggal ku gemetar kids 💖", gif: "7.jpeg"},
+  {title: "Terima kasih 💐", text: "udah hadir dan mau hibur aku walau ga bsa nyanyi 🎶", gif: "4.jpeg"},
+  {title: "NIH BUNGA ONLEN 💞", text: "ku g bisa buat kata kata bagus tpi yaudah lah love you  🌙", gif: "3.gif"}
+];
+
+
+let current = -1;
+function nextPage() {
+  current++;
+
+  const titleEl = document.getElementById("title");
+  const textEl = document.getElementById("text");
+  const gifEl = document.getElementById("gifCharacter");
+  const nextBtn = document.getElementById("nextButton");
+
+  if (current < pages.length) {
+    const page = pages[current];
+    titleEl.textContent = page.title;
+    textEl.textContent = page.text;
+    gifEl.src = page.gif;
+
+    document.body.style.background = `linear-gradient(135deg, hsl(${Math.random()*360}, 100%, 90%), hsl(${Math.random()*360}, 100%, 95%))`;
+
+    
+    if (current === pages.length - 1) {
+      nextBtn.textContent = "💖 Selesai 💖";
+      nextBtn.disabled = true;
+    }
+  }
+}
+
+
+window.onload = () => {
+  nextPage();
+};
+</script>
+</body>
+</html>
